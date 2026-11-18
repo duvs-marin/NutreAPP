@@ -1,10 +1,14 @@
+import java.util.List;
 import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,6 +27,10 @@ public class Video {
 
     @Column(name = "url", nullable = false)
     private String url;
+
+    @OneToMany (mappedBy = "video")
+    @JsonManagedReference(value = "video-visualizacion")
+    private List<Video> videos;
 
     
     public Video() {

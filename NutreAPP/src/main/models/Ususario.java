@@ -1,7 +1,9 @@
+import java.util.List;
 import java.util.UUID;
 
 import com.example.models.helpers.Departamento;
 import com.example.models.helpers.Rol;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
@@ -10,6 +12,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity 
@@ -37,6 +40,13 @@ public class Ususario {
 
     @Column (name = "contraseña", nullable = false, unique = false)
     private String contraseña_hash;
+
+    //creando relacion
+    @OneToMany (mappedBy = "ususario")
+    @JsonManagedReference(value = "usuario-visualizacion")
+    private List<Visualizacion> visualizaciones;
+
+
     
     public Ususario() {
     }
