@@ -38,24 +38,16 @@ public class VisualizacionServicio {
         return this.repositorio.findAll();
        }
 
-       //metodo para actulizar(modificar)
-       public Visualizacion modificar(UUID id, Visualizacion datos){
-          if(!visualizacionBuscado.isPresent()){
+       public boolean eliminar(UUID id){
+        Optional<Usuario> usuarioBuscado = this.repositorio.findById(id);
+          if(!usuarioBuscado.isPresent()){
               throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"id no encontrado"); 
 
           }else{
-            //1.PRECARGAR LA INFO QUE EXISTE ACTUALMENTE EN BD
-            Visualizacion visuliazacionEncontrado=visualizacionBuscado.get();
-
-            //2.espacio para modificar solo las propiedades permitidos
-            visualizacionEncontrado.setNombre(datos.getNombre());
-            visualizacionEncontrado.setRol(datos.getRol());
-
-            //3.espacio para volver a guardar el usuario que se acaba de modficar
-            this.repositorio.save(visualizacionEncontrado);
-
-
-      }
+            this.repositorio.deleteById(id);
+            return true;
+          }
+      
    }
 
-}
+
