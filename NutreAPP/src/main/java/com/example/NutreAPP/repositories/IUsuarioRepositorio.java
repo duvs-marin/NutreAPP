@@ -7,7 +7,7 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.NutreAPP.services.UsuarioServicio;
+
 
 @Repository 
 public interface IUsuarioRepositorio extends JpaRepository <IUsuarioRepositorio,UUID>{

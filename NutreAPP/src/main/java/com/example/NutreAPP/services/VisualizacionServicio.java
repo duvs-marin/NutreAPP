@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.example.NutreAPP.repositories.IVideo;
 
 @Service
-public class VideoServicio {
+public class VisualizacionServicio {
 
     // INYECCIÓN DE DEPENDENCIAS
     @Autowired
