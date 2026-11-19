@@ -1,3 +1,4 @@
+package com.example.NutreAPP.models;
 import java.time.LocalDate;
 import java.util.UUID;
 

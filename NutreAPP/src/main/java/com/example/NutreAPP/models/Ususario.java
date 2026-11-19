@@ -1,12 +1,14 @@
+package com.example.NutreAPP.models;
+
 import java.util.List;
 import java.util.UUID;
 
-import com.example.models.helpers.Departamento;
-import com.example.models.helpers.Rol;
+import com.example.NutreAPP.models.helpers.Departamento;
+import com.example.NutreAPP.models.helpers.Rol;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
@@ -15,41 +17,39 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-@Entity 
-@Table(name ="usuarios")
-
+@Entity
+@Table(name = "usuarios")
 public class Ususario {
 
-    @Id 
+    @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column (name = "nombre",nullable = false,unique = false,length = 100)
+    @Column(name = "nombre", nullable = false, unique = false, length = 100)
     private String nombre;
 
-    @Column (name="correo", nullable = false, unique = true, length = 80)
+    @Column(name = "correo", nullable = false, unique = true, length = 80)
     private String correo;
 
-    @Enumerated (EnumType.STRING)
-    @Column (name = "rol", nullable = false, unique = false)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "rol", nullable = false, unique = false)
     private Rol rol;
 
-    @Enumerated (EnumType.STRING)
-    @Column (name = "departamento", nullable = false, unique = false)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "departamento", nullable = false, unique = false)
     private Departamento departamento;
 
-    @Column (name = "contraseña", nullable = false, unique = false)
+    @Column(name = "contraseña", nullable = false, unique = false)
     private String contraseña_hash;
 
-    //creando relacion
-    @OneToMany (mappedBy = "ususario")
+    // Creando relación
+    @OneToMany(mappedBy = "ususario")
     @JsonManagedReference(value = "usuario-visualizacion")
     private List<Visualizacion> visualizaciones;
 
-
-    
     public Ususario() {
     }
+
     public Ususario(UUID id, String nombre, String correo, Rol rol, Departamento departamento, String contraseña_hash) {
         this.id = id;
         this.nombre = nombre;
@@ -58,47 +58,60 @@ public class Ususario {
         this.departamento = departamento;
         this.contraseña_hash = contraseña_hash;
     }
+
     public UUID getId() {
         return id;
     }
+
     public void setId(UUID id) {
         this.id = id;
     }
+
     public String getNombre() {
         return nombre;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
     public String getCorreo() {
         return correo;
     }
+
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
     public Rol getRol() {
         return rol;
     }
+
     public void setRol(Rol rol) {
         this.rol = rol;
     }
+
     public Departamento getDepartamento() {
         return departamento;
     }
+
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
     }
+
     public String getContraseña_hash() {
         return contraseña_hash;
     }
+
     public void setContraseña_hash(String contraseña_hash) {
         this.contraseña_hash = contraseña_hash;
     }
 
-    
-    
+    public List<Visualizacion> getVisualizaciones() {
+        return visualizaciones;
+    }
 
-
+    public void setVisualizaciones(List<Visualizacion> visualizaciones) {
+        this.visualizaciones = visualizaciones;
+    }
 }
-
-

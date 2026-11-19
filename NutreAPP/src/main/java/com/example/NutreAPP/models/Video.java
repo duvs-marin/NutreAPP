@@ -1,3 +1,4 @@
+package com.example.NutreAPP.models;
 import java.util.List;
 import java.util.UUID;
 
