@@ -26,9 +26,9 @@ public class UsuasioServicio {
     // Método para guardar un usuario
     public Ususario guardar(Ususario datos) {
         this.validador.validarCorreo(datos.getCorreo());
-        this.validador.validarUsuarionuevo(datos);
+        this.validador.validarUsuarioNuevo(datos);
         this.validador.validarNombre(datos.getNombre());
-        this.validador.validadorContraseña(datos.getContraseña_hash());
+        this.validador.validarContraseña(datos.getContraseña_hash());
         return this.repositorio.save(datos);
     }
 

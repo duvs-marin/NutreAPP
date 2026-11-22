@@ -1,10 +1,13 @@
 package com.example.NutreAPP.repositories;
 
+import java.util.UUID;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository 
+import com.example.NutreAPP.models.Visualizacion;
 
-public interface IVisualizacion extends JpaRepository{
+@Repository
+public interface IVisualizacion extends JpaRepository<Visualizacion, UUID> {
 
 }
