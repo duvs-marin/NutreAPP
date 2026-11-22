@@ -1,4 +1,5 @@
 package com.example.NutreAPP.models;
+
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -13,9 +14,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-    @Entity
-    @Table(name = "Visualizacion")
-    public class Visualizacion {
+@Entity
+@Table(name = "Visualizacion")
+public class Visualizacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -27,15 +28,16 @@ import jakarta.persistence.Table;
     @Column(name = "completado", nullable = false, unique = false)
     private Boolean completado;
 
-    //creando una relacion
+    // creando una relacion
     @ManyToOne
     @JoinColumn(name = "id")
     @JsonBackReference(value = "usuario-visualizacion")
     private Ususario ususario;
+
     @ManyToOne
     @JoinColumn(name = "id")
     @JsonBackReference(value = "video-visualizacion")
-     private Video video;
+    private Video video;
 
     public Visualizacion() {
     }
@@ -68,5 +70,21 @@ import jakarta.persistence.Table;
 
     public void setCompletado(Boolean completado) {
         this.completado = completado;
+    }
+
+    public Ususario getUsusario() {
+        return ususario;
+    }
+
+    public void setUsusario(Ususario ususario) {
+        this.ususario = ususario;
+    }
+
+    public Video getVideo() {
+        return video;
+    }
+
+    public void setVideo(Video video) {
+        this.video = video;
     }
 }
